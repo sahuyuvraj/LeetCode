@@ -1,56 +1,44 @@
 class Solution {
 public:
-    bool check(int node,vector<bool>&vis,vector<bool>&difVis,vector<int>adj[]){
-        vis[node]=true;
-        difVis[node]=true;
-        for(int i=0;i<adj[node].size();i++){
-            if(!vis[adj[node][i]]){
-                if(check(adj[node][i],vis,difVis,adj))return true;
-            }else if(difVis[adj[node][i]])return true;
-        }
-        difVis[node]=false;
-        return false;
-    }
-    bool checkCycle(int Courses,vector<int>adj[]){
-        vector<bool>vis(Courses,false),difVis(Courses,false);
-        for(int i=0;i<Courses;i++){
-            if(!vis[i]){
-                if(check(i,vis,difVis,adj))return true;
-            }
-        }
-        return false;
-    }
-    
-    void dfs(int node,vector<int>adj[],vector<bool>&vis,stack<int>&st){
-        vis[node]=true;
-        for(int i=0;i<adj[node].size();i++){
-            if(!vis[adj[node][i]]){
-                dfs(adj[node][i],adj,vis,st);
-            }
-        }
-        st.push(node);
-    }
-    
-    vector<int> findOrder(int Courses, vector<vector<int>>& pre) {
+    bool kahnsAlgo(vector<int>adj[],int n,vector<int>&indegree,vector<int>&ans){
+        queue<int>q;
         
-        vector<int>adj[Courses];
-        for(int i=0;i<pre.size();i++)
+        for(int i=0;i<n;++i){
+            if(indegree[i]==0)
+                q.push(i);
+        }
+        
+        int count=0;
+        while(!q.empty()){
+            int curr=q.front();q.pop();
+            
+            for(auto it:adj[curr]){
+                indegree[it]--;
+                if(indegree[it]==0)
+                    q.push(it);
+            }
+            
+            ans.push_back(curr);
+            count++;
+        }
+        if(count!=n)return false;
+        return true;
+        
+    }
+    vector<int> findOrder(int nC, vector<vector<int>>& pre) {
+        int n=pre.size();
+        vector<int>adj[nC];
+        vector<int>indegree(nC,0);
+        
+        for(int i=0;i<n;++i){
             adj[pre[i][1]].push_back(pre[i][0]);
+            indegree[pre[i][0]]++;
+        }
         
         vector<int>ans;
-        if(checkCycle(Courses,adj))return ans;
-        stack<int>st;
-        vector<bool>vis(Courses,false);
-        for(int i=0;i<Courses;i++){
-            if(!vis[i]){
-                dfs(i,adj,vis,st);
-            }
-        }
-        while(!st.empty()){
-            ans.push_back(st.top());
-            st.pop();
-        }
-       // reverse(ans.begin(),ans.end());
-        return ans;
+        if(kahnsAlgo(adj,nC,indegree,ans))
+            return ans;
+        return {};
+        
     }
 };
