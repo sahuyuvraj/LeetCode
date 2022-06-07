@@ -1,36 +1,30 @@
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
-        int len1 = s1.length(), len2 = s2.length();
-        if (len2 < len1)
-        {
-            return false;
+        
+        int len1=s1.size(),len2=s2.size();
+        
+        if(len1>len2)return false;
+        
+        unordered_map<char,int>frq_s1,frq_s2;
+        for(int i=0;i<len1;i++){
+            frq_s1[s1[i]]++;
+            frq_s2[s2[i]]++;
         }
-        unordered_map<char, int> freq_S1, freq_S2;
-        for (int i = 0; i < len1; i++)
-        {
-            freq_S1[s1[i]]++;
-            freq_S2[s2[i]]++;
-        }
-        if (freq_S1 == freq_S2)
-        {
-            return true;
-        }
-
-        for (int j = len1; j < len2; j++)
-        {
-            char prevChar = s2[j - len1];
-            freq_S2[prevChar]--;
-            if (freq_S2[prevChar] == 0 && s2[j] != prevChar)
-            {
-                freq_S2.erase(prevChar);
-            }
-            freq_S2[s2[j]]++;
-            if (freq_S1 == freq_S2)
-            {
-                return true;
-            }
+        
+        if(frq_s1==frq_s2)return true;
+        
+        for(int i=len1;i<len2;i++){
+            
+            char prevChar=s2[i-len1];
+            frq_s2[prevChar]--;
+            
+            if(frq_s2[prevChar]==0 and s2[i]!=prevChar)
+                frq_s2.erase(prevChar);
+            frq_s2[s2[i]]++;
+            if(frq_s1==frq_s2)return true;
         }
         return false;
+        
     }
 };
