@@ -8,18 +8,18 @@ class Solution
 {
     public:
     //Function to return max value that can be put in knapsack of capacity W.
-    int memo(vector<vector<int>>&dp,int W, int wt[], int val[], int n){
-       if(W==0 or n==0)return 0;
-       if(dp[W][n]!=-1)return dp[W][n];
-       if(wt[n-1]>W)dp[W][n]=memo(dp,W,wt,val,n-1);
-       else return dp[W][n]= max(memo(dp,W,wt,val,n-1),val[n-1]+memo(dp,W-wt[n-1],wt,val,n-1));
-    
-    }
-    int knapSack(int W, int wt[], int val[], int n) 
+    int knapSack(int W, int wt[], int val[], int N) 
     { 
        // Your code here
-    vector<vector<int>>dp(W+1,vector<int>(n+1,-1));
-    return memo(dp,W,wt,val,n);
+       int dp[N+1][W+1];
+       for(int i=0;i<=N;i++){
+           for(int j=0;j<=W;j++){
+               if(i==0 or j==0)dp[i][j]=0;
+               else if(wt[i-1]>j)dp[i][j]=dp[i-1][j];
+               else dp[i][j]=max(dp[i-1][j],val[i-1]+dp[i-1][j-wt[i-1]]);
+           }
+       }
+       return dp[N][W];
     }
 };
 
