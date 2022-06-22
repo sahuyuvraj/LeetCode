@@ -10,33 +10,19 @@ using namespace std;
 
 class Solution{
   public:
-  vector<vector<int>>t;
-  int help(int price[],int l,int n){
-      
-      if(l==0 || n==0){
-          return 0;
-      }
-      if(t[n][l]!=-1){
-          return t[n][l];
-      }
-      if((n)<=l){
-          return t[n][l]=( max((price[n-1]+help(price,l-(n),n)),(help(price,l,n-1))));
-      }
-      else{
-          return t[n][l]=help(price,l,n-1);
-      }
-  }
+   int solve(vector<vector<int>>&memo,int price[],int len,int n){
+       if(len==0 or n==0)return 0;
+       if(memo[n][len]!=-1)return memo[n][len];
+       if(n>len)return memo[n][len]=solve(memo,price,len,n-1);
+       else return memo[n][len]=max(solve(memo,price,len,n-1),price[n-1]+solve(memo,price,len-n,n));
+   }
+  
     int cutRod(int price[], int n) {
         //code here
-        t=vector<vector<int>>(n+1,vector<int>(n+1,-1));
-        for(int i=0;i<n+1;i++){
-            for(int j=0;j<n+1;j++){
-                if(i==0 || j==0){
-                    t[i][j]=0;
-                }
-            }
-        }
-        return help(price,n,n);
+        vector<vector<int>>memo(n+1,vector<int>(n+1,-1));
+        for(int j=0;j<=n;j++)memo[0][j]=0;
+        for(int i=0;i<=n;i++)memo[i][0]=0;
+        return solve(memo,price,n,n);
     }
 };
 
