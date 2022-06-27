@@ -10,16 +10,19 @@ using namespace std;
 
 class Solution{   
 public:
-    int solve(vector<int>arr,int n){
-        int low=0,high=arr.size()-1;
-        while(low<=high){
-            int mid=low+(high-low)/2;
-            if(arr[mid]<n)low=mid+1;
-            else high=mid-1;
-        }
-        if(low<arr.size() and arr[low]<=n)low++;
-        return low;
-    }
+    // int upper_bound(vector<int> nums, int target){
+    //     int l = 0, r = nums.size()-1, m = 0;
+    //     while(l < r) {
+    //         m = (l+r)/2;
+    //         if(nums[m] <= target)
+    //             l = m+1;
+    //         else 
+    //             r = m;
+    //     }
+    //     return r;
+    // }
+    
+    
     int median(vector<vector<int>> &matrix, int r, int c){
         // code here
        int high=2000;
