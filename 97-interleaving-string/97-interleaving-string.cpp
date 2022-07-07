@@ -1,26 +1,25 @@
 class Solution {
 public:
-    bool find(string s1, int i1, string s2, int i2, string s3, int i3,unordered_map<string,bool> &memo)
-    {
-        string pos = to_string(i1)+','+to_string(i2)+','+to_string(i3);
-        if(memo.count(pos))
-            return memo[pos];
-        if(i1==s1.size() and  i2==s2.size() and i3==s3.size())
-            return true;
-        bool a = false,b = false;
+    int dp[101][101];
+    bool solve(string s1,int n,string s2,int m,string s3,int len){
+        if(len==0)return 1;
+        if(dp[n][m]!=-1)return dp[n][m];
         
-        if(i1<s1.size() and i3<s3.size() and s1[i1]==s3[i3])
-            a = find(s1,i1+1,s2,i2,s3,i3+1,memo);
-        if(i2<s2.size() and i3<s3.size() and s2[i2]==s3[i3] )
-            b = find(s1,i1,s2,i2+1,s3,i3+1,memo);
+        int a=0,b=0;
+        if(n-1>=0 and s1[n-1]==s3[len-1])a=solve(s1,n-1,s2,m,s3,len-1);
+        if(m-1>=0 and s2[m-1]==s3[len-1])b=solve(s1,n,s2,m-1,s3,len-1);
         
-        memo[pos] = a or b;
-        return memo[pos];
-            
+        return dp[n][m]=a or b;
     }
     
     bool isInterleave(string s1, string s2, string s3) {
-        unordered_map<string,bool> memo;
-        return find(s1,0,s2,0,s3,0,memo);
+        
+        int n=s1.size();
+        int m=s2.size();
+        int len=s3.size();
+        if(n+m!=len)return false;
+        dp[n][m];
+        memset(dp,-1,sizeof(dp));
+        return solve(s1,n,s2,m,s3,len);
     }
 };
