@@ -10,17 +10,17 @@ using namespace std;
 
 class Solution{   
 public:
-    // int upper_bound(vector<int> nums, int target){
-    //     int l = 0, r = nums.size()-1, m = 0;
-    //     while(l < r) {
-    //         m = (l+r)/2;
-    //         if(nums[m] <= target)
-    //             l = m+1;
-    //         else 
-    //             r = m;
-    //     }
-    //     return r;
-    // }
+    int solve(vector<int> nums, int target){
+        int l = 0, r = nums.size()-1, m = 0;
+        while(l <= r) {
+            m = (l+r)/2;
+            if(nums[m] <= target)
+                l = m+1;
+            else 
+                r = m-1;
+        }
+        return l;
+    }
     
     
     int median(vector<vector<int>> &matrix, int r, int c){
@@ -34,7 +34,7 @@ public:
             int mid=(high+low)/2;
             for(int i=0;i<r;i++)
             {
-                cnt+=(upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin());  //solve(matrix[i],mid);
+                cnt+=solve(matrix[i],mid);
             }
             if(cnt<=median)
             {
