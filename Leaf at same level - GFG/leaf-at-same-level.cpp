@@ -103,11 +103,7 @@ class Solution{
         if(!root)return 0;
         return max(height(root->left),height(root->right))+1;
     }
-    int count(Node*root){
-        if(!root)return 0;
-        if(!root->left and !root->right)return 1;
-        return count(root->left)+count(root->right)+1;
-    }
+
     
     void dfs(Node*root,int h,int cnt,bool &f){
         if(!root)return;
@@ -122,14 +118,10 @@ class Solution{
         bool f=true;
          dfs(root,h,1,f);
          return f;
-
-    //    cout<<h<<" "<<cnt;
-        //if((pow(2,h)-1)!=cnt)return false;
+        return true;
     }
 };
-// 3319 7492 9323 N 3574 2426 4463 N 5865 2323 6263 N 5899
-// 3
-// 2^(height)-1=7
+
 
 // { Driver Code Starts.
 // Driver program to test size function
