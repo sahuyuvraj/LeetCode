@@ -8,27 +8,19 @@ class Solution{
 public:
     int maxIndexDiff(int arr[], int n) {
         // code here
-int i,j,max=0,curr=0;
-       if(n==1)
-       {
-           return 0;
-       }
-       for(i=0;i<n;i++)
-       {
-           for(j=n-1;j>=i;j--)
-           {
-               if(arr[i]<=arr[j])
-               {
-                   curr = j-i;
-                   break;
-               }
-           }
-           if(curr>max)
-           {
-               max = curr;
-           }
-       }
-       return max;
+        if(n==1)return 0;
+         int ans=0,curr=0;
+         
+         for(int i=0;i<n;i++){
+             for(int j=n-1;j>=i;j--){
+                 if(arr[i]<=arr[j]){
+                     curr=j-i;
+                     break;
+                 }
+             }
+                     if(curr>ans)ans=curr;
+         }
+        return ans;
     }
 
 };
