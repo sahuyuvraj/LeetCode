@@ -110,29 +110,23 @@ struct Node
 };
 */
 // your task is to complete this function
-int ans=-1;
-
-int solve(Node *root, int &k, int node){
-    if(!root)return 0;
-    else if(root->data==node)return 1;
+vector<int>ds;
+void solve(Node*root,int node,vector<int>&arr){
+    if(!root)return;
     
-    int ld=solve(root->left,k,node);
-    int rd=solve(root->right,k,node);
+    arr.push_back(root->data);
+    solve(root->left,node,arr);
+    solve(root->right,node,arr);
     
-    if(ld==k or rd==k){
-        ans=root->data;
-        return ans;
-    }
-    
-    if(ld)return ld+1;
-    else if(rd)return rd+1;
-    return 0;
+    if(root->data==node)ds=arr;
+    arr.pop_back();
 }
-
 int kthAncestor(Node *root, int k, int node)
 {
     // Code here
-    ans=-1;
-    solve(root,k,node);
-    return ans;
+    vector<int>arr;
+    solve(root,node,arr);
+    reverse(ds.begin(),ds.end());
+    if(k>=ds.size() or k==0)return -1;
+    return ds[k];
 }
