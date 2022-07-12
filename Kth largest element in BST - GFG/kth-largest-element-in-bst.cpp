@@ -97,26 +97,18 @@ struct Node {
 class Solution
 {
     public:
-    int KthLargest(Node*root,int K,int &k){
-        if(!root)return -1;
-        int r=KthLargest(root->right,K,k);
-        if(r!=-1)return r;
-        k++;
-        if(K==k)return root->data;
-        return KthLargest(root->left,K,k);
-    }
-    int kthLargest(Node *root, int K)
+    int kthLargest(Node *root, int &K)
     {
         //Your code here
-        int k=0;
-        return KthLargest(root,K,k);
+        if(!root)return -1;
+        int r=kthLargest(root->right,K);
+        if(r!=-1)return r;
+        K--;
+        if(K==0)return root->data;
+        return kthLargest(root->left,K);
+
     }
 };
-// 78 69 80 4 72 79
-//      78
-//   69     80
-//  4  72  79
-// 5
 
 // { Driver Code Starts.
 
