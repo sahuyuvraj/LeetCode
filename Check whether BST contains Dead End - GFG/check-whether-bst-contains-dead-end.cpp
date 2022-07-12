@@ -103,12 +103,12 @@ Node * right, * left;
 /*You are required to complete below method */
 bool solve(Node*root,int min,int max){
     if(!root)return false;
-    if(min==max)return true;
-    return solve(root->left,min,root->data-1) or solve(root->right,root->data+1,max);
+    if(root->data==min+1 and root->data==max-1)return true;
+    return solve(root->left,min,root->data) or solve(root->right,root->data,max);
 }
 
 bool isDeadEnd(Node *root)
 {
     //Your code here
-    return solve(root,1,INT_MAX);
+    return solve(root,0,INT_MAX);
 }
