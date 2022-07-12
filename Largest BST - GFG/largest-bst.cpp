@@ -110,16 +110,16 @@ class Solution{
     
     bool isBST(Node*root,int mn,int mx){
         if(!root)return true;
-        if(root->data <= mn or root->data>=mx)return false;
-        return isBST(root->left,mn,root->data) and isBST(root->right,root->data,mx);
+        if(root->data>=mx or root->data<=mn)return false;
+        return isBST(root->left,mn,root->data) and isBST(root->right,root->data,mx); 
     }
-    
     int largestBst(Node *root)
     {
     	//Your code here
-    	if(!root)return 0;
-    	if(isBST(root,INT_MIN,INT_MAX))return size(root);
-    	return max(largestBst(root->left),largestBst(root->right));
+       if(!root)return 0;
+       if(isBST(root,INT_MIN,INT_MAX))return size(root);
+       
+       return max(largestBst(root->left),largestBst(root->right));
     }
 };
 
