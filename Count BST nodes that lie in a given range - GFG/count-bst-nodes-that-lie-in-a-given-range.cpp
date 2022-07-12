@@ -98,8 +98,12 @@ int cnt=0;
     int getCount(Node *root, int l, int h)
     {
       // your code goes here 
-      solve(root,l,h);
-      return cnt;
+    //   solve(root,l,h);
+    //   return cnt;
+    
+    if(!root)return 0;
+    if(root->data<=h and root->data>=l)return 1+getCount(root->left,l,h)+getCount(root->right,l,h);
+     return getCount(root->left,l,h)+getCount(root->right,l,h);
     }
 };
 
