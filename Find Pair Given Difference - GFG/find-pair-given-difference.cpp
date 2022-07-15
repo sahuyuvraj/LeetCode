@@ -26,26 +26,19 @@ int main()
     return 0;
 }// } Driver Code Ends
 
-bool isP(int arr[],int x,int size){
-    int low=0,high=size-1,mid;
-    while(low<=high){
-        mid=low+(high-low)/2;
-        if(arr[mid]==x)return true;
-        if(arr[mid]<x)low=mid+1;
-        else high=mid-1;
-    }
-    return false;
-}
 
 bool findPair(int arr[], int size, int n){
     //code
+    
     sort(arr,arr+size);
-    if(n==0){
-        for(int i=1;i<size;i++)if(arr[i-1]==arr[i])return true;
-        return false;
-    }
+    int j=1;
     for(int i=0;i<size;i++){
-        if(isP(arr,arr[i]+n,size))return true;
+        if(arr[j]-arr[i]==n and i!=j)return true;//ignoring same element
+        else if(arr[j]-arr[i]<n){
+            j++;
+            i--;
+        }
     }
     return false;
+    
 }
