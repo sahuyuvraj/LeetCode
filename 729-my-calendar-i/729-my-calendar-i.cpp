@@ -3,7 +3,7 @@ public:
     map<int,int>mp;
     
     MyCalendar() {
-        
+        mp.clear();
     }
     
     bool book(int start, int end) {
