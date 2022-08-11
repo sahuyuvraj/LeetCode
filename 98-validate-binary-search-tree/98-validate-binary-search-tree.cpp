@@ -11,14 +11,19 @@
  */
 class Solution {
 public:
+    
     bool check(TreeNode*root,long long mn,long long mx){
-        if(!root)return true;
-        if(root->val <=mn or root->val>=mx)return false;
+        if(!root) return true;
+        
+        if(root->val>=mx or root->val<=mn) return false;
         return check(root->left,mn,root->val) and check(root->right,root->val,mx);
     }
+    
+    
     bool isValidBST(TreeNode* root) {
-        if(!root or !root->left and !root->right)return true; 
-        //int mn=INT_MIN,mx=INT_MAX;
-        return check(root,LLONG_MIN,LLONG_MAX);
+        if(!root or (!root->left and !root->right)) return true;
+        long long mn=LLONG_MIN;
+        long long mx=LLONG_MAX;
+        return check(root,mn,mx);
     }
 };
