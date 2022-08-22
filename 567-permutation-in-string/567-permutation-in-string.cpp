@@ -19,7 +19,7 @@ public:
             char prevChar=s2[i-len1];
             frq_s2[prevChar]--;
             
-            if(frq_s2[prevChar]==0 and s2[i]!=prevChar)
+            if(frq_s2[prevChar]==0 )
                 frq_s2.erase(prevChar);
             frq_s2[s2[i]]++;
             if(frq_s1==frq_s2)return true;
