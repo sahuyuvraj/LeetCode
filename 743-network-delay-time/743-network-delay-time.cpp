@@ -19,7 +19,7 @@ public:
                 if (dist[a.first] > dist[p.second] + a.second)
                 {
                     dist[a.first] = dist[p.second] + a.second;
-                    pq.push({-dist[a.first], a.first});
+                    pq.push({dist[a.first], a.first});
                 }
             }
         }
