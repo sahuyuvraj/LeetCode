@@ -1,7 +1,10 @@
 class Solution {
 public:
     bool isPowerOfThree(int n) {
-        int max = 1162261467;
-        return n > 0 && max % n == 0; 
+        long temp=1;
+        while(n>1 and temp<n){
+            temp+=temp<<1;
+        }
+        return temp==n;
     }
 };
