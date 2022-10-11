@@ -1,43 +1,43 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 // User function Template for C++
 
 class Solution{
 public:
     vector<int> nextPermutation(int N, vector<int> arr){
         // code here
-        bool FLAG=false;
-        int i;
-        for(i=N-2;i>=0;i--){
-            if(arr[i]<arr[i+1]){
-                FLAG=true;
+        int flg=0,ind=N-1;
+        for(int i=N-2;i>=0;i--){
+            if(arr[i+1]>arr[i]){
+                flg=1;
+                ind=i;
                 break;
             }
         }
         
-        if(!FLAG){
+        if(flg==0){
             reverse(arr.begin(),arr.end());
             return arr;
         }
         
-        sort(arr.begin()+i+1,arr.end());
-        int k=i+1;
+        sort(arr.begin()+ind+1,arr.end());
         
-        while(arr[i]>=arr[k]){
-            k++;
+        for(int k=ind+1;k<N;k++){
+            if(arr[k]>arr[ind]){
+                swap(arr[k],arr[ind]);
+                break;
+            }
         }
-        
-        swap(arr[i],arr[k]);
         return arr;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main(){
     int t;
@@ -56,4 +56,5 @@ int main(){
         cout<<"\n";
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
