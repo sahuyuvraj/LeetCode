@@ -14,10 +14,13 @@ class Solution
     int celebrity(vector<vector<int> >& M, int n) 
     {
         // code here 
+        
         int c=0;
         for(int i=0;i<n;i++)if(M[c][i])c=i;
         for(int i=0;i<n;i++)if(i!=c and (!M[i][c] or M[c][i]))return -1;
+        
         return c;
+        
     }
 };
 
