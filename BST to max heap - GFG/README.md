@@ -1,7 +1,6 @@
 # BST to max heap
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a&nbsp;Binary Search Tree. Convert a given BST into a Special Max Heap with the condition that all the values in the left subtree of a node should be less than all the values in the right subtree of the node. This condition is applied on all the nodes in the so converted Max Heap.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a&nbsp;Binary Search Tree. Convert a given BST into a Special Max Heap with the condition that all the values in the left subtree of a node should be less than all the values in the right subtree of the node. This condition is applied on all the nodes in the so converted Max Heap.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -21,7 +20,9 @@
          1    2 4     5
 The given <strong>BST</strong> has been transformed into a
 <strong>Max Heap </strong>and it's postorder traversal is
-1 2 3 4 5 6 7.</span></pre>
+1 2 3 4 5 6 7.</span>
+
+</pre>
 
 <div><span style="font-size:18px"><strong>Your task :</strong></span></div>
 
@@ -40,5 +41,4 @@ The given <strong>BST</strong> has been transformed into a
 <div><span style="font-size:18px"><strong>Constraints :</strong></span></div>
 
 <div><span style="font-size:18px">1 ≤ n ≤ 10<sup>5</sup></span></div>
- <p></p>
-            </div>
+</div>
