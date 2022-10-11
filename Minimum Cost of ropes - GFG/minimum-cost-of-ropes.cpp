@@ -1,37 +1,33 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
+
+typedef long long ll;
 class Solution
 {
     public:
     //Function to return the minimum cost of connecting the ropes.
     long long minCost(long long arr[], long long n) {
         // Your code here
-        
         priority_queue<long long,vector<long long>,greater<long long>>pq;
+        for(ll i=0;i<n;i++)pq.push(arr[i]);
         
         long long ans=0;
-        for(long long i=0;i<n;i++){
-            pq.push(arr[i]);
-        }
-        
         while(pq.size()>1){
-            long long n1=pq.top();pq.pop();
-            long long n2=pq.top();pq.pop();
-            long long sum=n1+n2;
-            ans+=sum;
-            pq.push(sum);
+           long long x=pq.top();pq.pop();
+           long long y=pq.top();pq.pop();
+           ans+=x+y;
+           pq.push(x+y);
         }
-        
         return ans;
     }
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main() {
     long long t;
@@ -48,4 +44,5 @@ int main() {
     }
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
