@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for C++
 
 #include <bits/stdc++.h>
@@ -101,46 +101,46 @@ void postorderTraversal(Node* root)
 
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function Template for C++
+
+/*struct Node {
+    int data;
+    Node *left, *right;
+};*/
 
 class Solution{
   public:
-    
-    void inorder(Node*root,vector<int>&arr){
-        if(!root)return;
-        inorder(root->left,arr);
-        arr.push_back(root->data);
-        inorder(root->right,arr);
-    }
-    
-    // void insert(Node*root,vector<int>&arr,int start,int end){
-    //     if(start>=end)return;
-    //     int mid=(start+end)/2;
-    //     root->data=arr[end];
-    //     insert(root->left,arr,start,mid);
-    //     insert(root->right,arr,mid+1,end-1);
-        
-    // }
-    int index=0;
-    void postorder(Node*root,vector<int>&arr){
-        if(!root)return;
-        postorder(root->left,arr);
-        postorder(root->right,arr);
-        root->data=arr[index++];
-    }
-    
+   
+   int i;                           
+   vector<int>v;
+   void inorder(Node*root){
+       if(!root)return;
+       inorder(root->left);
+       v.push_back(root->data);
+       inorder(root->right);
+   }
+   
+   void postorder(Node*root){
+       if(!root)return;
+       postorder(root->left);
+       postorder(root->right);
+       root->data=v[i++];
+   }
+   
     void convertToMaxHeapUtil(Node* root)
     {
         // Your code goes here
-        vector<int>arr;
-        inorder(root,arr);
-        postorder(root,arr);
+        
+        i=0;
+        v.clear();
+        inorder(root);
+        postorder(root);
     }    
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -160,4 +160,5 @@ int main()
     return 0;
 }
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
