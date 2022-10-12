@@ -14,7 +14,8 @@ class Solution{
     void sortBySetBitCount(int arr[], int n)
     {
         // Your code goes here
-        stable_sort(arr,arr+n,cmp);
+       // stable_sort(arr,arr+n,cmp);
+       stable_sort(arr,arr+n,[](int a,int b){return __builtin_popcount(a)>__builtin_popcount(b);});
     }
 };
 
