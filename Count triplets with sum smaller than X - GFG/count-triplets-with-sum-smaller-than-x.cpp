@@ -1,8 +1,8 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{
 	
 	
@@ -10,37 +10,27 @@ class Solution{
 	long long countTriplets(long long arr[], int n, long long sum)
 	{
 	    // Your code goes here
-	    
-	   sort(arr,arr+n);
-	    long long cnt=0;
+	    sort(arr,arr+n);
+	    long long count=0;
 	    for(int i=0;i<n-2;i++){
 	        int j=i+1,k=n-1;
-	        
 	        while(j<k){
 	            if(arr[i]+arr[j]+arr[k]==sum){
-	                cnt+=k-j-1;
+	                count+=k-j-1;
 	                j++;
 	            }else if(arr[i]+arr[j]+arr[k]<sum){
-	                cnt+=k-j;
+	                count+=k-j;
 	                j++;
 	            }else k--;
 	        }
 	    }
-	    return cnt;
-	   
-	   //long long ans=0;
-	   //for(int i=0;i<n-2;i++)
-	   //for(int j=i+1;j<n-1;j++)
-	   //for(int k=j+1;k<n;k++)
-	   //if(arr[i]+arr[j]+arr[k]<sum)ans++;
-	   
-	   //return ans;
+	    return count;
 	}
 		 
 
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main() 
 {
@@ -71,4 +61,5 @@ int main()
     return 0;
 }
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
