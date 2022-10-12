@@ -1,11 +1,11 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial template for C++
 
 #include<bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function template for C++
 
 class Solution{
@@ -19,20 +19,18 @@ class Solution{
         // your code here
         if(size==1)return a[0];
         sort(a,a+size);
-        int cnt=1;
+        int count=1;
         for(int i=1;i<size;i++){
             if(a[i-1]==a[i]){
-                cnt++;
-                if(cnt>size/2)return a[i];
-            }else{
-                cnt=1;
-            }
+                count++;
+                if(count>size/2)return a[i-1];
+            }else count=1;
         }
         return -1;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main(){
 
@@ -53,4 +51,5 @@ int main(){
 
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
