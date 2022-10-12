@@ -13,20 +13,18 @@ class Solution
 	{
 	    // Code here
 	    vector<pair<int,int>>v;
-	    for(int i=0;i<nums.size();i++)
-	        v.push_back({nums[i],i});
-	     
-	     sort(v.begin(),v.end());
-	     
-	     int cnt=0;
-	     for(int i=0;i<nums.size();i++){
-	         if(v[i].second!=i){
-	             swap(v[i],v[v[i].second]);
-	             cnt++;
-	             i--;
-	         }
-	     }
-	    return cnt;
+	    for(int i=0;i<nums.size();i++)v.push_back({nums[i],i});
+	    sort(v.begin(),v.end());
+	    
+	    int count=0;
+	    for(int i=0;i<nums.size();i++){
+	        if(v[i].second!=i){
+	            count++;
+	            swap(v[i],v[v[i].second]);
+	            i--;
+	        }
+	    }
+	    return count;
 	}
 	
 // 		 {10, 19, 6, 3, 5}
