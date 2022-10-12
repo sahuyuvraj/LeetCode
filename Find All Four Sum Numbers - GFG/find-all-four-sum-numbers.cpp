@@ -1,9 +1,9 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 // User function template for C++
 
 class Solution{
@@ -12,33 +12,26 @@ class Solution{
     // k : the quadruple sum required
     vector<vector<int> > fourSum(vector<int> &arr, int k) {
         // Your code goes here
-        
-        set<vector<int>>st;
         sort(arr.begin(),arr.end());
-        int n=arr.size();
-        
-        for(int i=0;i<n-3;i++){
-            for(int j=i+1;j<n-2;j++){
+        set<vector<int>>st;
+        for(int i=0;i<arr.size()-3;i++){
+            for(int j=i+1;j<arr.size()-2;j++){
                 int start=j+1;
-                int end=n-1;
+                int end=arr.size()-1;
                 while(start<end){
-                    long long sum=arr[i]+arr[j]+arr[start]+arr[end];
-                    if(sum<k)start++;
-                    else if(sum>k)end--;
-                    else{
-                        st.insert({arr[i],arr[j],arr[start],arr[end]});
-                        start++;
-                        end--;
-                    }
+                    int sum=arr[start]+arr[end]+arr[i]+arr[j];
+                    if(sum==k){st.insert({arr[i],arr[j],arr[start],arr[end]});start++;end--;}
+                    else if(sum<k)start++;
+                    else end--;
                 }
             }
         }
-        vector<vector<int>>ans(st.begin(),st.end());
-        return ans;
+        vector<vector<int>>v(st.begin(),st.end());
+        return v;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() {
     int t;
     cin >> t;
@@ -63,4 +56,5 @@ int main() {
         cout << "\n";
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
