@@ -1,7 +1,6 @@
 # Searching in an array where adjacent differ by at most k
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">A step array is an array of integer where each element has a difference of at most k with its neighbor. Given a key x, we need to find the index value of x&nbsp;if multiple elements exist, return the first occurrence of the key. </span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">A step array is an array of integer where each element has a difference of at most k with its neighbor. Given a key x, we need to find the index value of x&nbsp;if multiple elements exist, return the first occurrence of the key. </span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -35,5 +34,4 @@ This is a function problem. The input is already taken care of by the driver cod
 1 ≤ N ≤ 10<sup>5</sup><br>
 1 ≤ K ≤ 10<sup>2</sup><br>
 1 ≤ arr[i], X ≤ 10<sup>5</sup></span></p>
- <p></p>
-            </div>
+</div>
