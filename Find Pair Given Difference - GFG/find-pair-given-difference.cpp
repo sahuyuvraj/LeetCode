@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
  
 using namespace std; 
@@ -24,7 +24,8 @@ int main()
     
   
     return 0;
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 bool findPair(int arr[], int size, int n){
@@ -33,11 +34,8 @@ bool findPair(int arr[], int size, int n){
     sort(arr,arr+size);
     int j=1;
     for(int i=0;i<size;i++){
-        if(arr[j]-arr[i]==n and i!=j)return true;//ignoring same element
-        else if(arr[j]-arr[i]<n){
-            j++;
-            i--;
-        }
+        if(arr[j]-arr[i]==n and i!=j)return true;
+        if(arr[j]-arr[i]<n)j++,i--;
     }
     return false;
     
