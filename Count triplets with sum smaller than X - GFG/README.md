@@ -1,7 +1,6 @@
 # Count triplets with sum smaller than X
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array <strong>arr[]</strong> of distinct integers of size <strong>N</strong> and a value <strong>sum</strong>, the task is to find the count of triplets <strong>(i, j, k)</strong>, having <strong>(i&lt;j&lt;k)&nbsp;</strong>with the sum of<strong> <strong>(arr[i] + arr[j] + arr[k])</strong>&nbsp;</strong>smaller than the given value sum.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array <strong>arr[]</strong> of distinct integers of size <strong>N</strong> and a value <strong>sum</strong>, the task is to find the count of triplets <strong>(i, j, k)</strong>, having <strong>(i&lt;j&lt;k)&nbsp;</strong>with the sum of<strong> <strong>(arr[i] + arr[j] + arr[k])</strong>&nbsp;</strong>smaller than the given value sum.</span></p>
 
 <p><br>
 <strong><span style="font-size:18px"><strong>Example 1:</strong></span></strong></p>
@@ -40,5 +39,4 @@ sum less than 12 (1, 3, 4), (1, 3, 5),
 <span style="font-size:18px">3 ≤ N ≤ 10<sup>3</sup></span></div>
 
 <div><span style="font-size:18px">-10<sup>3</sup>&nbsp;≤ arr[i]&nbsp;≤ 10<sup>3</sup></span></div>
- <p></p>
-            </div>
+</div>
